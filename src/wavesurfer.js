@@ -1323,11 +1323,13 @@ export default class WaveSurfer extends util.Observer {
      * @param {ArrayBuffer} arraybuffer Buffer to process
      */
     loadArrayBuffer(arraybuffer) {
-        this.decodeArrayBuffer(arraybuffer, data => {
-            if (!this.isDestroyed) {
-                this.loadDecodedBuffer(data);
-            }
-        });
+        if (!this.isDestroyed) {
+            this.decodeArrayBuffer(arraybuffer, data => {
+                if (!this.isDestroyed) {
+                    this.loadDecodedBuffer(data);
+                }
+            });
+        }
     }
 
     /**
